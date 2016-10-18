@@ -63,7 +63,7 @@ function $http(url) {
 }
 
 //调用实例
-var mdnApit = 'https://developer.mozilla.org/en-US/search.json'
+var mdnApi = 'https://developer.mozilla.org/en-US/search.json'
 var payload = {
     'topic': 'js',
     'q': 'promise'
