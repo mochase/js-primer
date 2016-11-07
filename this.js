@@ -59,7 +59,7 @@ console.log(o.b.g()) //42
 /**
  * 原型链中的this
  */
-// 如果该方法存在于一个对象的原型链上,那么this指向的调用这个方法的对象
+// 如果该方法存在于一个对象的原型链上,那么this指向调用这个方法的对象
 var o = {
     f: function() {
         return this.a + this.b
