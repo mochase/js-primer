@@ -13,41 +13,41 @@
     <h2 data-bind="demo"></h2>
     <span data-bind="demo"></span>
 </body>
-    <script>
-        //订阅者模式
-        function Observer() {
-            this.fns = []
-        }
+<script>
+    //订阅者模式
+    function Observer() {
+        this.fns = []
+    }
 
-        Observer.prototype = {
-            subscribe: function (fn) {
-                this.fns.push(fn)
-            },
-            unsubscribe: function (fn) {
-                this.fns = this.fns.filter(function(item) {
-                    return item !== fn
-                })
-            },
-            publish: function (data, thisObj) {
-                var _this = thisObj || this
-                this.fns.forEach(function(item) {
-                    item.call(_this, data)
-                })
-            }
+    Observer.prototype = {
+        subscribe: function (fn) {
+            this.fns.push(fn)
+        },
+        unsubscribe: function (fn) {
+            this.fns = this.fns.filter(function(item) {
+                return item !== fn
+            })
+        },
+        publish: function (data, thisObj) {
+            var _this = thisObj || this
+            this.fns.forEach(function(item) {
+                item.call(_this, data)
+            })
         }
-        var o = new Observer
-            
-        var subscriber = function (data) {
-            var i = document.querySelectorAll('*[data-bind="demo"]').length
-            while (i--) {
-                document.querySelectorAll('*[data-bind="demo"]')[i].innerHTML = data
-            }
+    }
+    var o = new Observer
+        
+    var subscriber = function (data) {
+        var i = document.querySelectorAll('*[data-bind="demo"]').length
+        while (i--) {
+            document.querySelectorAll('*[data-bind="demo"]')[i].innerHTML = data
         }
-        o.subscribe(subscriber)
-    
-        document.querySelector('*[data-model="demo"]').addEventListener('input', function(e) {
-            e.preventDefault()
-            o.publish(document.querySelector('*[data-model="demo"]').value)   
-        })
-    </script>
+    }
+    o.subscribe(subscriber)
+
+    document.querySelector('*[data-model="demo"]').addEventListener('input', function(e) {
+        e.preventDefault()
+        o.publish(document.querySelector('*[data-model="demo"]').value)   
+    })
+</script>
 </html>
