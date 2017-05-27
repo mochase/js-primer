@@ -159,3 +159,6 @@ console.log(g()) //atzeey
 
 var o = {a: 37, f: f, g: g}
 console.log(o.f(), o.g()) //37, atzeey
+
+
+

@@ -1,0 +1,64 @@
+<!--前端路由-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>这是导航:
+        <a href="#/">to a</a>
+        <a href="#/orange">to b</a>
+        <a href="#/purple">to c</a>
+    </div>
+    <div>a</div>
+
+</body>
+<script>
+    function Router() {
+        this.routes = {}
+        this.currentUrl = ''
+    }
+
+    //注册route
+    Router.prototype.route = function(path, callback) {
+        this.routes[path] = callback || function() {}
+    }
+
+    Router.prototype.refresh = function() {
+        this.currentUrl = location.hash.slice(1) || '/'
+        this.routes[this.currentUrl]()
+    }
+    Router.prototype.init = function() {
+        window.addEventListener('load', this.refresh.bind(this), false)
+        window.addEventListener('hashchange', this.refresh.bind(this), false)
+    }
+
+    var router = new Router()
+    router.init()
+    var content = document.querySelector('body')
+
+    function operation(somthing) {
+        //加载不同模块
+    }
+
+    Router.route('/', function() {
+        operation('a')
+    })
+    Router.route('/orange', function() {
+        operation('b')
+    })
+    Router.route('/purple', function() {
+        operation('c')
+    })
+
+    function log() {
+        console.log.apply(console, arguments)
+    }
+
+    log(1, 2)
+    
+</script>
+</html>
