@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div style="color: aqua;line-height: 24px" class="demo">
+    <p>hello world</p>
+  </div>
+</body>
+<style>
+  .demo {
+    background-color: bisque;
+    font-size: 16px;
+  }
+</style>
+<script>
+  var node = document.querySelector('.demo')
+  node.style.height = '20px'
+  console.log(node.style.color) // aqua
+  console.log(node.style.backgroundColor) // ''
+  console.log(node.style)
+  console.log(node.style['0'])  // 'color'
+  console.log(node.style.cssText)  // 'color: aqua; line-height: 24px;'
+  console.log(node.style.fontSize) // ''
+</script>
+</html>
