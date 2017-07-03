@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>this is a div</div>
+    <input class="demo" value="焦点"></input>
+</body>
+<script>
+    var node = document.querySelector('.demo')
+    node.onblur = function () {
+        alert('失去焦点啦')
+    }
+</script>
+</html>

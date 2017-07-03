@@ -72,10 +72,35 @@ ie支持但是有各种奇怪的bug
 ***offsetHeight***
 返回元素的布局高度.(即元素的border-box高度, 会被四舍五入取整)
 
-> 盒模型由内到外依次是 content -> padding -> 滚动条(如果有, 可能会与padding有重叠) -> border -> margin
+> 盒模型由内到外依次是 content -> padding -> 滚动条(如果有, 被包含在padding内) -> border -> margin
 
+***style***
+返回元素的内联样式集合
 
+***innerText***
+返回元素以及它的后代节点的文本内容. 可读可写.(写时不删除当前节点)
 
+***outerText***
+非标准!作为getter, 返回值同`innerText`;作为setter, 它将删除当前节点并将其替换为给定的文本
+
+***onabort***
+缺省. 发送到window中断事件的事件处理.
+
+***onblur***
+元素失去焦点时的事件处理函数.
+在IE中,几乎所有类型的元素都可以触发blur事件,但在基于gecko的浏览器中,大部分元素都不能触发blur事件.
+
+***oncancel***
+缺省.
+
+***oncanplay***
+缺省.
+
+***oncanplaythrough***
+缺省.
+
+***onchange***
+当前元素onChange时的事件处理函数
 
 
 

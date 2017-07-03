@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>hello
+        <p>this is a parap <span>this is span</span></p>
+    </div>
+    <h3></h3>
+</body>
+<script>
+    var node = document.querySelector('div')
+    document.querySelector('h3').outerText = node.innerText
+    console.log(node.innerText)
+    window.onabort = function () {
+        alert('aborted')
+    }
+</script>
+</html>
