@@ -66,6 +66,13 @@ ie支持但是有各种奇怪的bug
 对于行内元素, `offsetTop`和`offsetLeft`描述的是第一个边界框的位置.
 (only chrome支持)
 
+***offsetWidth***
+返回元素的布局宽度.(即元素的border-box宽度, 会被四舍五入取整)
+
+***offsetHeight***
+返回元素的布局高度.(即元素的border-box高度, 会被四舍五入取整)
+
+> 盒模型由内到外依次是 content -> padding -> 滚动条(如果有, 可能会与padding有重叠) -> border -> margin
 
 
 
