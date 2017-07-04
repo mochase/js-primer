@@ -101,6 +101,60 @@ ie支持但是有各种奇怪的bug
 
 ***onchange***
 当前元素onChange时的事件处理函数
+能使用onChange事件的元素大概有这些: `form`, `select`, `input`, `textarea`
+(待深入研究).
+
+***onClick***
+当前元素触发click事件时的处理函数.
+click 事件发生在 mousedown 和 mouseup 事件之后。
+
+***onclose***
+缺省. 当在window对象上触发close事件时的处理函数.
+
+***oncontextmenu***
+设置当前窗口contextmenu事件的事件处理函数.
+此事件会发生在没有阻止右键事件的情况下,而且这不取决于此元素是否拥有了contextmenu属性.
+一个例子: (取消页面右键)
+```
+window.oncontextmenu = function () {
+    return false
+}
+```
+
+***oncuechange***
+缺省.
+
+***ondblclick***
+在当前元素上双击鼠标左键时的处理函数.
+
+***ondrag***
+缺省
+
+***ondragend***
+缺省
+
+***ondragenter***
+
+***ondragleave***
+
+***ondragover***
+
+***ondragstart***
+
+***ondrop***
+
+***oondurationchange***
+
+***onemptied***
+
+***onended***
+
+***onerror***
+error事件的处理函数.针对各种目标的不同类型的错误出发了Error事件:
+当js运行时错误(包括语法错误)发生时,触发window.onerror().
+当一项资源(如`img`和`script`)加载失败,加载资源的元素会触发该元素上的onerror()处理函数.这些error事件不会向上冒泡.
+
+***onfocus***
 
 
 
