@@ -155,24 +155,177 @@ error事件的处理函数.针对各种目标的不同类型的错误出发了Er
 当一项资源(如`img`和`script`)加载失败,加载资源的元素会触发该元素上的onerror()处理函数.这些error事件不会向上冒泡.
 
 ***onfocus***
+设置元素获得焦点时的事件处理函数.
+在IE中,几乎所有类型的元素都会触发focus事件,但在Gecko中,只有少数几种元素会触发focus事件.
 
+***oninput***
+当input元素的value属性值由输入设备改变时,就会触发input事件.
 
+***oninvalid***
 
+***onkeydown***
+当用户按下键盘上的按键时会触发keydown事件.
+非标准
 
+***onkeyup***
+在当前元素上释放键盘按键时会触发keyup事件.
+非标准
 
+***onkeypress***
+当用户在键盘上按下某个键(不是所有的键都会,比如ctrl)以后会触发keypress事件.
+非标准
 
+***onload***
+当资源加载时触发,适用于`window`, `XMLHttpRequest`, `<img>`等元素的加载事件.
 
+***onloadeddata***
+缺省.
 
+***onloadedmetadata***
+缺省.
 
+***onloadstart***
+缺省.
 
+***onmousedown***
+在当前元素上点击鼠标按键时会触发mousedown事件.
+非标准
 
+***onmouseup***
+在当前元素上放开鼠标某个按键时会触发mouseup事件.
+非标准
 
+***onmouseenter***
+缺省.
 
+***onmouseleave***
+缺省.
 
+***onmousemove***
+当用户在当前元素上移动鼠标时会触发mousemove事件.
 
+***onmouseout***
+当鼠标离开一个元素时,会在这个元素上触发mouseout事件.
 
+***onmouseover***
+当鼠标移动到一个元素上时,会在这个元素上触发mouseover事件.
+onmouseover <---> onmouseout
 
+***onmousewheel***
+缺省.
 
+***onpause***
+缺省.
+
+***onplay***
+缺省.
+
+***onplaying***
+
+***onprogress***
+
+***onratechange***
+
+***onreset***
+reset 事件只有在用户点击表单中的reset按钮时才会被触发 (`<input type="reset"/>`).
+
+***onresize***
+在窗口大小开边之后,就会触发resize事件.
+
+***onscroll***
+当滚动某个元素的内容时scroll事件将会被触发.
+
+***onseeked***
+
+***onseeking***
+
+***onselect***
+只有在文本框和文本域内选择文本才会触发select事件.
+
+***onshow***
+
+***onstalled***
+
+***onsubmit***
+当用户点击提交按钮(`<input type="submit"/>`)提交表单时,会触发submit事件.
+
+***onsuspend***
+
+***ontimeupdate***
+
+***ontimeupdate***
+
+***ontoggle***
+
+***onvolumechange***
+
+***onwaiting***
+
+***click***
+触发元素的点击事件.
+从`Element`对象继承的方法
+
+***focus***
+元素获得焦点
+从`Element`对象继承的方法
+
+***blur***
+元素失去焦点
+从`Element`对象继承的方法
+
+***onauxclick***
+
+***ongotpointercapture***
+
+***onlostpointercapture***
+
+***onpointercancel***
+
+***onpointerdown***
+
+***onpointerenter***
+
+***onpointerleave***
+
+***onpointermove***
+
+***onpointerout***
+
+***onpointerover***
+
+***onpointerup***
+
+***namespaceURI***
+
+***prefix***
+
+***localName***
+
+***tagName***
+返回当前元素的标签名
+在HTML中返回大写形式.对于元素节点,tagName的值和nodeName的值相同.
+
+***id***
+返回元素的id.
+唯一.
+
+***className***
+返回元素的class属性的值.
+用空格分隔开的多个class属性值的字符串.
+
+***classList***
+用来取代className,操作更灵活.
+```
+element.classList.add()
+element.classList.remove()
+element.classList.item()
+element.classList.toggle()
+element.classList.contains()
+```
+兼容性: IE10+,其他主流浏览器均支持.
+
+***slot***
+返回当前元素所绑定的shadow DOM 的slot.slot相当于一个占位符,用户可以用自定义标签填充.
 
 
 
