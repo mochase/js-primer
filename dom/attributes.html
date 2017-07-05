@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id" class="custom test" style="color: aqua" data-ng-class="test">hello world</div>
+</body>
+<script>
+    var attributes = document.querySelector('#id').attributes
+    console.log(attributes)
+    var i = attributes.length
+    while (i--) {
+        console.log(attributes[i].name)
+        console.log(attributes[i].value)
+    }
+
+    Array.prototype.forEach.call(attributes, function (item) {
+        console.info(item.name)
+        console.info(item.value)
+    })
+</script>
+</html>

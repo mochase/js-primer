@@ -327,10 +327,25 @@ element.classList.contains()
 ***slot***
 返回当前元素所绑定的shadow DOM 的slot.slot相当于一个占位符,用户可以用自定义标签填充.
 
+***attributes***
+返回当前元素的属性集合,它不是数组类型,所以不能直接使用Array上的方法.
+```
+    Array.prototype.forEach.call(attributes, function (item) {
+        console.info(item.name)
+        console.info(item.value)
+    })
+```
 
+***shadowRoot***
 
+***assignedSlot***
 
+***innerHTML***
+返回元素后代的序列化HTML代码(特殊字符会转义, 如 '&', '<')
+不属于W3C DOM规范, 便捷但是没有统一的标准.
+IE下将input的value视作innerHTML,其它浏览器则没有这个问题.
 
+***outerHTML***
 
 
 
