@@ -1,0 +1,32 @@
+<!--事件流: 冒泡与捕获的详细demo-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="clickme">click me</button>
+</body>
+<script>
+    var buttonNode = document.querySelector('#clickme')
+    buttonNode.onclick = function () {
+        console.log('1, you click button')
+    }
+    document.body.onclick = function () {
+        console.log('2, you click body')
+    }
+    document.onclick = function () {
+        console.log('3, you click document')
+    }
+    window.addEventListener('click', function () {
+        console.log('4, you click window')
+    }, true)
+    // 执行顺序为4, 1, 2, 3. 可以看到,点击事件被父元素截获了,且只在捕获阶段执行一次.
+</script>
+
+</html>
