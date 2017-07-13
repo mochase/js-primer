@@ -346,6 +346,163 @@ element.classList.contains()
 IE下将input的value视作innerHTML,其它浏览器则没有这个问题.
 
 ***outerHTML***
+返回元素后代(包括元素本身)的序列化HTML代码
+
+***scrollTop***
+设置或返回一个元素滚动条距离元素顶部的距离.
+如果元素的容器没有产生垂直方向的滚动条,则scrollTop默认为0
+
+***scrollHeight***
+只读属性,返回元素的可滚动高度.(若父元素视口 < 子元素高度, scrollHeight = 父元素 padding * 2 + 子元素高度;
+若父元素视口 > 子元素高度, scrollHeihgt = 父元素视口)
+视口包含padding(不包括 margin, border)
+属性将会对值四舍五入取整
+
+***scrollLeft***
+设置或返回一个元素滚动条距离元素左边的距离(和元素的排列方向有关,`rtl`, 那么滚动条在最右侧)
+
+***scrollWidth***
+只读属性,返回元素的可滚动宽度.
+计算规则同`scrollHeight`, 但是padding只计算一遍.
+实际测试过程中不同浏览器返回数值有差异.
+
+***clientTop***
+只读属性. 返回元素顶部边框的宽度(即border-top-width)
+会对结果取整.
+
+***clientHeight***
+只读属性,返回元素内部的高度
+clientHeight = content Height + padding - 水平滚动条高度(如果有)
+会对结果取整.
+
+***clientLeft***
+只读属性,返回元素左边框的高度.(即border-left-width)
+
+***clientWidth***
+只读属性,返回元素内部的宽度
+计算规则同 clientHeight
+
+***onbeforecopy***
+***onbeforecut***
+***onbeforepaste***
+
+***oncopy***
+oncopy属性用来获取或设置当前元素的copy事件的事件处理函数.
+
+***oncut***
+oncut属性用来获取或设置当前元素的cut事件的事件处理函数.
+
+***onpaste***
+onpaste 属性用来获取或设置当前元素的paste事件的事件处理函数.
+
+***onsearch***
+***onselectstart***
+通常是select下拉框来触发.
+
+***onwheel***
+通过在元素上移动鼠标滚轮来触发.
+
+***onwebkitfullscreenchange***
+***onwebkitfullscreenerror***
+
+***previousElementSibling***
+只读属性.返回当前元素前一个兄弟节点(元素节点).
+如果该元素已经是第一个, 则返回null
+
+***nextElementSibling***
+只读属性, 返回当前元素下一个兄弟节点(元素节点).
+如果该元素已经是最后一个,则返回null
+
+***children***
+只读属性. 返回当前元素所有子元素的动态集合的引用(对子元素的删改会改变该引用的值)
+不包含文本节点.
+
+***firstElementChild***
+只读属性,返回元素的第一个元素节点.没有则返回null
+
+***lastElementChild***
+只读属性,返回元素的最后一个元素节点,没有则返回null
+
+***childElementCount***
+只读属性,返回元素所有子元素节点的数量.
+
+***hasAttribute***
+boolean类型, 返回元素是否包含指定属性.
+
+***hasAttributeNS***
+
+***hasAttributes***
+待废弃! boolean类型, 返回元素是否至少包含一个属性.
+```
+if (node.hasAttributes()) {
+    // do something
+}
+```
+***getAttribute***
+返回元素指定属性的值,如果没有则为`null`或空字符串.(视浏览器决定)
+
+***getAttributeNS***
+返回元素在指定命名空间中某属性的值,如果没有则为`null`或空字符串
+命名空间只在`XML`中支持.故 `html5`无法使用该api
+
+***setAttribute***
+设置元素指定属性的值,如果该属性之前不存在则会新创建.
+boolean类型的属性始终会被认为`true`, 无论它们的值是什么;对于这样的属性,作为规则,你应该使用空字符串给其赋值.
+
+***setAttributeNS***
+
+***removeAttribute***
+删除指定属性.(删除不存在的属性不会报错)
+
+***removeAttributeNS***
+
+***getAttributeNode***
+返回元素指定属性的属性节点(返回的是属性节点, nodeType为2, 区别于 `getAttribute`)
+
+***getAttributeNodeNS***
+
+***setAttributeNode***
+
+***setAttributeNodeNS***
+
+***removeAttributeNode***
+
+***closet***
+匹配特定选择器且离当前元素最近的祖先元素（也可以是当前元素本身）。如果匹配不到，则返回 null。
+Only chrome, firefox 支持
+
+***matches***
+如果元素将被指定的选择器字符串选择，Element.matches()  方法返回true; 否则返回false。
+
+***webkitMatchesSelector***
+Element.matches()的非标准实现方式
+
+
+***attachShadow***
+给指定元素挂载一个shadow DOM,并且返回它的 ShadowRoot
+有兼容性问题.
+
+
+***getElementsByTagName***
+返回包含指定tagName的所有子元素的动态集合的引用(不包括元素本身).
+和`document.getElementsByTagName`类似,但是搜索范围被限制在元素的子元素.
+
+***getElementsByTagNameNS***
+
+***getElementsByClassName***
+返回包含指定class的所有子元素的动态集合的引用(包括元素本身).
+和`document.getElementsByTagName`类似,但是搜索范围被限制
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="demo">
+      test
+    </div>
+  </div>
+</body>
+<style>
+  .container {
+    height: 400px;
+    padding: 60px;
+    width: 220px;
+    overflow: scroll
+  }
+  .demo {
+    height: 600px;
+    width: 400px;
+  }
+</style>
+<script>
+  setTimeout(function () {
+    document.querySelector('.container').scrollTop = 300
+    // 注意这里是设置父容器的scrollTop
+    console.log(document.querySelector('.container').scrollHeight)
+    console.log(document.querySelector('.container').scrollWidth)
+  }, 1000)
+</script>
+</html>
