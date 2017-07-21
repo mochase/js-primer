@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="" id="div-1">this is div 1</div>
+  <div id="div-2">this is div 2</div>
+  <div id="div-3">this is div 3</div>
+</body>
+<script>
+  
+  setTimeout(function () {
+    var el = document.querySelector('#div-1')
+    el.nextElementSibling.remove()
+  }, 3000)
+</script>
+</html>

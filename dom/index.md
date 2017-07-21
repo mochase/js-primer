@@ -493,21 +493,84 @@ Element.matches()的非标准实现方式
 返回包含指定class的所有子元素的动态集合的引用(包括元素本身).
 和`document.getElementsByTagName`类似,但是搜索范围被限制
 
+***insertAdjacentElement***
+将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置.
+```
+element.insertAdjacentEkement(position, element)
+```
+position: 
+`beforebegin`: 在该元素本身前面,
+`afterbegin`: 在该元素中,第一个子节点之前.
+`beforeend`: 在该元素中,最后一个子节点之后.
+`afterend`: 在该元素本身的后面.
 
+***insertAdjacentText***
+将一个给定的文本节点插入到相对于被调用的元素给定的位置.
+参数同上
 
+***insertAdjacentHTML***
+将指定的文本解析为HTML或XML,并将结果节点插入到指定位置.它不会重新解析正在使用的元素,这使得比直接innerHTML操作更快.
+```
+dom.insertAdjacentHTML('afterend', '<div id="two">two</div>')
+```
 
+***requestPointerLock***
 
+***getClientRects***
+**important**
 
+***getBoundingClientRect***
+**important**
 
+***scrollIntoView***
+让被调用的元素滚动到浏览器窗口的可视区域内.(滚动条)
 
+***scrollIntoViewIfNeeded***
+only webkit
 
+***createShadowRoot***
+***getDestinationInsertionPoints***
 
+***animate***
+```
+var animation = element.animate(keyframes, options)
+```
+实验性质, css animation的 js实现.(only chrome)
 
+***remove***
+将被调用的element从它所属的dom树中删除.
 
+***webkitRequestFullScreen***
+将被调用的元素全屏展示(有可能被浏览器拒绝)
 
+***webkitRequestFullscreen***
 
+***querySelector***
+dom选择器,选择语法与css一致.选择的是满足条件的第一个元素.
+IE9+ 支持,IE8部分支持.
 
+***querySelectorAll***
+dom选择器,选择语法与css一致.选择的是满足条件的所有元素集合
 
+***setPointerCapture***
+***releasePointerCapture***
+***hasPointerCapture***
+
+***before***
+在当前节点之前插入节点.
+(only chrome & firefox)
+
+***after***
+在当前节点之后插入节点.
+(only chrome & firefox)
+
+***replaceWith***
+替换当前节点
+(only chrome & firefox)
+
+***prepend***
+在父节点的第一个子节点之前插入节点.
+(only chrome & firefox)
 
 
 
