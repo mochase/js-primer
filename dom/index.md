@@ -572,19 +572,104 @@ dom选择器,选择语法与css一致.选择的是满足条件的所有元素集
 在父节点的第一个子节点之前插入节点.
 (only chrome & firefox)
 
+***append***
+在父节点的最后一个子节点之后插入节点
+(only chrome & firefox)
+**这组 api 被插入的节点均为 text节点**
 
+***nodeType***
+返回当前节点的类型
 
+***ELEMENT_NODE***
+***ATTRIBUTE_NODE***
+***TEXT_NODE***
+***CDATA_SECTION_NODE***
+***ENTITY_REFERENCE_NODE***
+***ENTITY_NODE***
+***PROCESSING_INSTRUCTION_NODE***
+***COMMENT_NODE***
+***DOCUMENT_NODE***
+***DOCUMENT_TYPE_NODE***
+***DOCUMENT_FRAGMENT_NODE***
+***NOTATION_NODE***
+***DOCUMENT_POSITION_DISCONNECTED***
+***DOCUMENT_POSITION_PRECEDING***
+***DOCUMENT_POSITION_FOLLOWING***
+***DOCUMENT_POSITION_CONTAINS***
+***DOCUMENT_POSITION_CONTAINED_BY***
+***DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC***
+上面这组属性为属性常量,表示节点的节点类型.
 
+***nodeName***
+以字符串形式返回当前节点的节点名称
 
+***baseURI***
+只读属性,返回一个节点的绝对基址url
+当浏览器要获取绝对url时,就需要用基url去解析相对url.例如`<img>`的src属性.
+document的默认基url是文档的地址(浏览器显示的地址,可以通过`window.location`获取)
 
+***isConnected***
 
+***ownerDocument***
+只读属性,返回当前节点顶层的document对象
 
+***parentNode***
+返回指定节点在dom树中的父节点.
+返回值可能是元素节点,也可能是document节点,也可能是documentFragment节点
 
+***parentElement***
+返回指定节点在dom树中的父节点(元素节点).如果它没有父节点或者父节点不为元素节点,则返回null
+(ie浏览器会有一些异常.只有元素节点自身才有这个属性)
 
+***childNodes***
+返回指定节点的所有子节点集合的动态引用(包含本文节点,注释节点等)
 
+***firstChild***
+返回指定节点的第一个子节点(文本节点,注释节点等)
 
+***lastChild***
+返回指定节点的最后一个子节点(文本节点等)
 
+***previousSibling***
+返回指定节点的上一个兄弟节点(文本节点等)
 
+***nextSibling***
+返回指定节点的下一个兄弟节点(文本节点等)
+
+***nodeValue***
+返回指定节点的值.不同类型的节点返回的值不同(属性节点返回属性的值,元素节点则返回null,其他等)
+
+***textContent***
+返回或设置一个节点及其后代的文本内容
+
+***hasChildNodes***
+boolean, 返回当前节点是否包含子节点
+
+***getRootNode***
+
+***normalize***
+将当前节点和它的后代节点"规范化"(规范化之后不存在空的文本节点,或者两个相邻的文本节点)
+
+***cloneNode***
+返回指定节点的一个副本(克隆一遍)
+```
+var el = node.cloneNode(deep)
+```
+如果deep为true,则表示为深度克隆.该节点的所有后代节点也都会被克隆.
+注意:
+1. 保持id的唯一性
+2. 文本本身也是一个或多个的Text节点.(`deep`为false时不会克隆所包含的文本)
+3. html中属性上绑定的事件会被克隆,但在js中通过`addEventListener`或`onclick`注册的事件不会被克隆
+
+***isEqualNode***
+返回两个节点是否相同
+
+***isSameNode***
+如果两个变量引用了同一个dom,则返回true
+(only firefox)
+
+***compareDocumentPosition***
+比较当前节点与任意文档中的另一个节点的位置关系.
 
 ### 参见:
 Element.getClientRects()
