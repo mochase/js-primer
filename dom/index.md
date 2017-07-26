@@ -671,5 +671,44 @@ var el = node.cloneNode(deep)
 ***compareDocumentPosition***
 比较当前节点与任意文档中的另一个节点的位置关系.
 
-### 参见:
-Element.getClientRects()
+***contains***
+boolean, 表示传入的节点是否为该节点的后代节点(节点本身同样返回`true`)
+```node.contains(otherNode)```
+
+***lookupPrefix***
+返回一个和指定命名空间URI绑定的命名空间前缀.如果没有,则返回null
+
+***lookupNamespaceURI***
+返回当前节点上与指定命名空间前缀绑定的命名空间URI,如果没有,则返回null
+
+***isDefaultNamespace***
+isDefaultNamespace 接受一个命名空间URI作为参数,如果该命名空间是当前节点的默认命名空间,则返回true
+
+***insertBefore***
+在当前节点的某个子节点之前再插入一个子节点.
+如果被插入的新节点已经在dom树中,则会先从dom树中移除.
+```parentNode.insertBefore(newElement, someElement)```
+如果`someElement`为`null`,则会被插入到子节点的末尾.
+没有`insertAfter()`方法, 但是可以使用`insertBefore`和`nextSibling`来模拟.
+
+***appendChild***
+在当前节点的子节点列表末尾插入一个新节点.
+如果被插入的新节点已经在dom树中,则会先从dom树中移除.
+
+***replaceChild***
+用指定的节点替换当前节点的一个子节点,并返回被替换掉的节点.
+如果被插入的新节点已经在dom树中,则会先从dom树中移除.
+```el = parentNode.replaceChild(newChild, oldChild)```
+
+***removeChild***
+删除当前节点的某个子节点.
+被移除的子节点仍然存在于内存中,可以被重新添加回dom树中.
+
+***addEventListener***
+给指定节点添加事件监听器
+
+***removeEventListener***
+给指定节点移除事件监听器
+
+***dispatchEvent***
+向一个指定的 事件目标派发一个事件,  以合适的顺序触发受影响的 事件目标
