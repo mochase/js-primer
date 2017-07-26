@@ -466,7 +466,7 @@ dom选择器,选择语法与css一致.选择的是满足条件的所有元素集
 
 ***getElementsByClassName***
 返回包含指定class的所有子元素的动态集合的引用(包括元素本身).
-和`document.getElementsByTagName`类似,但是搜索范围被限制
+和`document.getElementsByClassName`类似,但是搜索范围被限制
 
 ***closet***
 匹配特定选择器且离当前元素最近的祖先元素（也可以是当前元素本身）。如果匹配不到，则返回 null。
@@ -591,7 +591,7 @@ boolean类型的属性始终会被认为`true`, 无论它们的值是什么;对�
 
 
 
-
+-------------------------------------------------------------------
 ### Element
 
 ***getClientRects***
@@ -630,29 +630,46 @@ var animation = element.animate(keyframes, options)
 
 
 
-
+----------------------------------------------------------
 ### Node
 
 ***nodeType***
 返回当前节点的类型
 
 ***ELEMENT_NODE***
+
 ***ATTRIBUTE_NODE***
+
 ***TEXT_NODE***
+
 ***CDATA_SECTION_NODE***
+
 ***ENTITY_REFERENCE_NODE***
+
 ***ENTITY_NODE***
+
 ***PROCESSING_INSTRUCTION_NODE***
+
 ***COMMENT_NODE***
+
 ***DOCUMENT_NODE***
+
 ***DOCUMENT_TYPE_NODE***
+
 ***DOCUMENT_FRAGMENT_NODE***
+
 ***NOTATION_NODE***
+
 ***DOCUMENT_POSITION_DISCONNECTED***
+
 ***DOCUMENT_POSITION_PRECEDING***
+
 ***DOCUMENT_POSITION_FOLLOWING***
+
 ***DOCUMENT_POSITION_CONTAINS***
+
 ***DOCUMENT_POSITION_CONTAINED_BY***
+
 ***DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC***
 上面这组属性为属性常量,表示节点的节点类型.
 
@@ -717,7 +734,7 @@ var el = node.cloneNode(deep)
 ***isDefaultNamespace***
 isDefaultNamespace 接受一个命名空间URI作为参数,如果该命名空间是当前节点的默认命名空间,则返回true
 
-
+----------------------------------------------
 ### EventTarget
 ***addEventListener***
 给指定节点添加事件监听器
