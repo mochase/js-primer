@@ -15,11 +15,11 @@
  */
 
 function debounce(func, wait, options) {
-    let lastArgs, 
-        lastThis,
+    let lastArgs,         // ??
+        lastThis,        // ??
         maxWait,
-        result,
-        timerId,
+        result,         // func 的回调
+        timerId,        // 记录时间区间的状态.(leading / trailing) 
         lastCallTime   // 上一次动作触发的时间(请求执行)
 
     let lastInvokeTime = 0     // 上一次实际执行的时间
