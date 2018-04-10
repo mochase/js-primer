@@ -1,0 +1,29 @@
+<!-- select 相关 dom 操作 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="">
+        <option value="1234">austin</option>
+        <option value="234">chiago</option>
+        <option value="zcqew">new york</option>
+    </select>
+    <button id="addButton">添加</button>
+</body>
+<script>
+    document.querySelector('#addButton').addEventListener('click', function () {
+        var select = document.querySelector('select')
+        console.log(select.selectedIndex)
+        console.log(select.options)
+        var selected = select.options[select.selectedIndex]
+        console.log(selected.value)
+        console.log(selected.textContent)
+    })
+</script>
+</html>
