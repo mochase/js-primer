@@ -259,7 +259,7 @@ window.oncontextmenu = function () {
 
 ***ondrop***
 
-***oondurationchange***
+***ondurationchange***
 
 ***onemptied***
 
@@ -286,6 +286,9 @@ error事件的处理函数.针对各种目标的不同类型的错误出发了Er
 ***onkeypress***
 当用户在键盘上按下某个键(不是所有的键都会,比如ctrl)以后会触发keypress事件.
 非标准
+
+事件顺序
+keydown -> keypress -> keyup
 
 ***onload***
 当资源加载时触发,适用于`window`, `XMLHttpRequest`, `<img>`等元素的加载事件.

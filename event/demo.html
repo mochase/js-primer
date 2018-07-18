@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="section-1">
+        page1
+    </div>
+</body>
+</html>
+<style>
+    .section-1 {
+        height: 2000px;
+        background: beige;
+    }
+</style>
+<script src="./polyfill.js"></script>
+<script>
+    // chrome & ie ..
+    document.addEventListener('mousewheel', function (e) {
+        e = eventCompat(e)
+    })
+    // firefox
+    document.addEventListener('DOMMouseScroll', function (e) {
+        e = eventCompat(e)
+    })
+</script>

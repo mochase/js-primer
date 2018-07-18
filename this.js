@@ -1,3 +1,4 @@
+// this 即执行上下文
 /**
  * 全局上下文
  */
@@ -8,32 +9,21 @@ console.log(this.document === document) //true
 //在浏览器中，全局对象为window对象
 console.log(this === window) //true
 
-this.a = 37
-console.log(window.a) //37
-
 /**
  * 函数上下文
  */
 
-//在函数内部,this的值取决于函数时如何调用的
+// 在函数内部,this的值取决于函数执行时的上下文
 function f1() {
     return this
 } 
 
 f1() === window  //true
 
-function f2(){
-    'use strict'
-    return this
-}
-
-f2() === undefined //true;这里有些浏览器会返回错误的结果:window
 
 /**
  * 对象方法中的this
  */
-
-//当以对象中的方法的方式调用函数时,this指代调用该函数的对象
 var o = {
     prop: 37,
     func: function () {
@@ -42,24 +32,10 @@ var o = {
 }
 console.log(o.func()) //37
 
-//运行时决定this
-var o = {prop: 37}
-function independent(){
-    return this.prop
-}
-o.f = independent
-console.log(o.f()) //37
-
-o.b = {
-    g: independent,
-    prop: 42
-}
-console.log(o.b.g()) //42
 
 /**
  * 原型链中的this
  */
-// 如果该方法存在于一个对象的原型链上,那么this指向调用这个方法的对象
 var o = {
     f: function() {
         return this.a + this.b
@@ -69,7 +45,7 @@ var o = {
 var p = Object.create(o)
 p.a = 1
 p.b = 4
-console.log(p.f()) //5
+console.log(p.f()) // 5
 
 /**
  * getter与setter中的this
@@ -95,7 +71,6 @@ console.log(o.phase, o.modules)  //-0.78, 1.414
 /**
  * 构造函数中的this
  */
-// 当构造器返回的默认值是一个this引用的对象时,可以手动设置返回其他的对象,如果返回值不是一个对象,返回this
 function C() {
     this.a = 37
 }
@@ -117,7 +92,6 @@ function C3(){
 }
 o = new C3()
 console.log(o.a) //undefined
-// 这里手动的设置了返回对象,与this绑定的默认对象被取消
 
 function C4(){
     this.a = 37
