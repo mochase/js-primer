@@ -1,4 +1,4 @@
-var o = {
+  var o = {
     f: function () {
       return this.a + this.b
     }
@@ -9,6 +9,6 @@ var o = {
     this.b = 2
   }
   var p = new P()
-//   P.prototype = o
+  // P.prototype = o
   
   console.log(p[__proto__])
