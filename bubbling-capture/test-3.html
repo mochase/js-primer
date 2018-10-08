@@ -28,7 +28,7 @@
     window.addEventListener('click', function () {
         console.log('4, you click window')
     }, true)
-    // 执行顺序为4, 1.可以看出,事件在到达具体元素后,停止了冒泡(但因为先执行事件捕获,所以并不会影响4的执行)
+    // 执行顺序为4, 1. 因为 1 阻止了事件继续冒泡
 </script>
 
 </html>

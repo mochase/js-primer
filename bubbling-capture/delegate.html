@@ -1,4 +1,4 @@
-<!--事件代理-->
+<!--简单的事件代理-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +16,9 @@
     </ul>
     <script>
         document.getElementById("parent-list").addEventListener("click",function(e) {
-          // 检查事件源e.targe是否为Li
-          if(e.target && e.target.nodeName.toUpperCase() == "LI") {
+          if(e.target && e.target.tagName.toUpperCase() === "LI") {
             // 真正的处理过程在这里
-            console.info(e.target)
-            console.log("List item ",e.target.id," was clicked!");
+            console.log("List item ", e.target.id, " was clicked!");
           }
         });
     </script>

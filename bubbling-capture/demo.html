@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <a href="http://www.baidu.com">
+            <img src="./capture-bubbling.png" alt="">
+        </a>
+    </div>
+
+</body>
+<script>
+    var target = document.querySelector('.wrapper')
+    // target.addEventListener('click', function(e) {
+    //     e.stopPropagation()
+    //     // 在事件捕获阶段阻止事件的继续传播,并不会阻止超链接跳转,即使此时事件还未到达 a 元素
+    // }, true)
+
+    var img = document.querySelector('img')
+    img.addEventListener('click', function (e) {
+        e.preventDefault()
+        // 阻止了超链接跳转,即使此时事件已经经过了 a 元素
+    }, false)
+</script>
+</html>
+
+<!-- 
+    在事件流的任何阶段调用event.preventDefault() 都是有效的.
+    stopPropagation() 并不会阻止默认行为的触发.
+    可以看出: 浏览器默认行为的触发和事件流没有什么关系.
+ -->

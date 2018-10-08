@@ -1,31 +1,46 @@
-EventTarget是一个由可以接受事件的对象实现的接口.并且可以为它们创建监听器.
+# EventTarget
+
 element, document, window是常见的事件目标,但是其他对象也可以是事件对象(比如XMLHttpRequest).
-需要事件目标还支持通过on...属性设置事件处理函数.
 
 `EventTarget.addEventListener`
+
 `EventTarget.removeEventListener`
+
 `EventTarget.dispatchEvent`
 
-***事件阶段***
-当一个DOM事件触发时,它不是在触发的对象上只触发一次的, 而是经历三个阶段.分别为"
-1. 一开始从文档的根节点流向目标对象(捕获阶段).
-2. 然后在目标对象上被触发(目标阶段)
-3. 之后再回溯到文档的根节点(冒泡阶段)
+## 什么是事件流
 
-![demo.png](./demo.png)
+window -> event.target -> window 
 
-***addEventListener 与事件的冒泡与捕获***
-`addEventListener`的最后一个参数,为true则代表使用事件捕获模式,false则表示事件冒泡模式.(默认为false: 冒泡模式)
+事件流经历了两个阶段:
 
-***阻止事件继续冒泡***
-事件冒泡过程,是可以被阻止的.通过`e.stopPropagation()`.
+1. 从 window 对象到 target (捕获阶段).
+2. 再从 target 回溯到 window 对象(冒泡阶段)
 
-***为什么会有事件冒泡与捕获两种模式?***
-事件流: 流本身含有方向的意思.
+![图示](./capture-bubbling.png)
+
+
+## 如何监听事件
+
+`addEventListener`的最后一个参数,为`true`则表示在捕获阶段监听;`false`则表示在冒泡阶段监听.(默认为false: 冒泡模式)
+
+
+## 阻止当前事件的进一步传播。
+
+`stopPropagation()`, 后续的监听事件函数不会被触发.
+
+### `stopPropagation`与`stopImmediatePropagation`的区别
+如果有多个相同类型事件的事件监听函数绑定到同一个元素，当该类型的事件触发时，它们会按照被添加的顺序执行。如果其中某个监听函数执行了event.stopImmediatePropagation() 方法，则当前元素剩下的监听函数将不会被执行(即会阻止同级的其他监听函数, 区别于event.stopPropagation)
+
+## 为什么会有事件冒泡与捕获两种模式?
+
+解决事件触发的顺序问题. 流本身含有方向的意思.
 可以将dom节点看做许多个同心圆, 那么结构: `window -> document -> html -> body -> div -> p`可以看做半径由大到小的一组同心圆,现在假如我们手指向圆心,那么是先执行小圆所代表的事件呢,还是大圆所代表的事件呢?
-由此衍生出两种事件模式: ###事件冒泡###与###事件捕获###
+由此衍生出两种事件模式: **事件冒泡** 与 **事件捕获**
 
-***`EventTarget.removeEventListener`***
+## 如何移除监听事件函数
+
+`removeEventListener`
 ```
 target.removeEventListener(type, listener[, useCapture])
 ```
@@ -43,6 +58,13 @@ var fn = function (e) {
   /* do something */
 }
 div.addEventListener('click', fn , false)
-div.remoceEventListener('click', fn, false)
+div.removeEventListener('click', fn, false)
 ```
+
+## event.preventDefault()
+
+1. 阻止浏览器的默认行为,比如超链接跳转, input框输入等..
+2. 在事件流的任何阶段调用都有效.
+3. 并不会阻止事件流的继续传播.
+
 
