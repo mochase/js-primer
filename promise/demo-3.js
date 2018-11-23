@@ -9,9 +9,3 @@ Promise.resolve().then((data) => {
 }, error => {
     console.error("2:" + error)
 })
-
-/**
- * Promise 链中的 try / catch
- * 未被捕获的异常同 reject;
- * 已被捕获的异常同 resolve;
- */

@@ -1,87 +1,81 @@
-<!-- 拖拽 api demo -->
-
 <div class="dropzone">
-    <div id="draggable" draggable="true">
-      This div is draggable
+    <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+        <p>p1</p>
+        <p>p2</p>
     </div>
-  </div>
+</div>
 <div class="dropzone"></div>
 <div class="dropzone"></div>
 <div class="dropzone"></div>
 
-  <style>
+<style>
     #draggable {
-      width: 200px;
-      height: 20px;
-      text-align: center;
-      background: white;
+        width: 200px;
+        /* height: 20px; */
+        text-align: center;
+        background: white;
     }
-  
+
     .dropzone {
-      width: 200px;
-      height: 20px;
-      background: blueviolet;
-      margin-bottom: 10px;
-      padding: 10px;
+        width: 200px;
+        height: 100px;
+        background: blueviolet;
+        margin-bottom: 10px;
+        padding: 10px;
     }
-  </style>
-  
-  <script>
+</style>
+
+<script>
     var dragged;
 
-    document.querySelector('#draggable').addEventListener('dragstart', function (event) {
-        event.dataTransfer.setData('text/plain',null)
-    })
-  
-    document.addEventListener("dragstart", function( event ) {
+    /* 可拖动的目标元素会触发事件 */
+    document.addEventListener("drag", function (event) {
+
+    }, false);
+
+    document.addEventListener("dragstart", function (event) {
         // 保存拖动元素的引用(ref.)
         dragged = event.target;
         // 使其半透明
         event.target.style.opacity = .5;
     }, false);
-  
-    document.addEventListener("dragend", function( event ) {
+
+    document.addEventListener("dragend", function (event) {
         // 重置透明度
         event.target.style.opacity = "";
     }, false);
-  
-  
-    document.addEventListener("dragenter", function( event ) {
-        // 当可拖动的元素进入可放置的目标时高亮目标节点
-        if ( event.target.className == "dropzone" ) {
+
+    /* 放下目标节点时触发事件 */
+    document.addEventListener("dragover", function (event) {
+        // 阻止默认动作
+        event.preventDefault();
+    }, false);
+
+    document.addEventListener("dragenter", function (event) {
+        // 当可拖动的元素进入可放置的目标高亮目标节点
+        if (event.target.className == "dropzone") {
             event.target.style.background = "purple";
         }
-  
+
     }, false);
-  
-    document.addEventListener("dragleave", function( event ) {
+
+    document.addEventListener("dragleave", function (event) {
         // 当拖动元素离开可放置目标节点，重置其背景
-        if ( event.target.className == "dropzone" ) {
+        if (event.target.className == "dropzone") {
             event.target.style.background = "";
         }
-  
+
     }, false);
 
-    /* 拖动目标元素时触发drag事件 */
-    document.addEventListener("drag", function( event ) {
-  
-    }, false);
-  
-    /* 放置目标元素时触发事件 */
-    document.addEventListener("dragover", function( event ) {
-        // 阻止默认动作以启用drop, 必须
-        event.preventDefault();
-    }, false);
-
-    document.addEventListener("drop", function( event ) {
+    document.addEventListener("drop", function (event) {
         // 阻止默认动作（如打开一些元素的链接）
         event.preventDefault();
-        // 将拖动的元素到所选择的放置目标节点中
-        if ( event.target.className == "dropzone" ) {
+        // 移动拖动的元素到所选择的放置目标节点
+        if (event.target.className == "dropzone") {
             event.target.style.background = "";
-            dragged.parentNode.removeChild( dragged );
-            event.target.appendChild( dragged );
+            dragged.parentNode.removeChild(dragged);
+            event.target.appendChild(dragged);
         }
-      
+
     }, false);
-  </script>
+</script>
