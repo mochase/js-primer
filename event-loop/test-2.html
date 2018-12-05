@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .outer {
+        width: 100px;
+        height: 100px;
+        background: #aaa;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    .inner {
+        width: 80px;
+        height: 80px;
+        background: #eee;
+    }
+</style>
+<script>
+    var outer = document.querySelector('.outer');
+    var inner = document.querySelector('.inner');
+
+    // Let's listen for attribute changes on the
+    // outer element
+    new MutationObserver(function() {
+        console.log('mutate');
+    }).observe(outer, {
+        attributes: true
+    });
+
+    // Here's a click listener…
+    function onClick() {
+        console.log('click');
+
+        setTimeout(function() {
+            console.log('timeout');
+        }, 0);
+
+        Promise.resolve().then(function() {
+            console.log('promise');
+        });
+
+        outer.setAttribute('data-random', Math.random());
+    }
+
+    // …which we'll attach to both elements
+    inner.addEventListener('click', onClick);
+    outer.addEventListener('click', onClick);
+
+    // extra code
+    inner.click();
+
+    /*
+    事件的执行顺序(在chrome下)
+        click
+        click
+        promise
+        mutate
+        promise
+        timeout
+        timeout
+    */
+</script>
+</html>

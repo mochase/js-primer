@@ -8,5 +8,6 @@
 2. retina -- retina屏幕适配问题汇总
     1. canvas 适配
     2. images 适配
-3. promise
+3. promise 例子
+4. event loop 与 microtask 的学习总结
 
