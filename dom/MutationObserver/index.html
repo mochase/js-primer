@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+      <div id="wrapper">
+
+      </div>
+  </body>
+  <script>
+    // Select the node that will be observed for mutations
+    var targetNode = document.getElementById("wrapper");
+
+    // Options for the observer (which mutations to observe)
+    var config = { attributes: true, childList: true, subtree: true };
+
+    // Callback function to execute when mutations are observed
+    var callback = function(mutationsList, observer) {
+      for (var mutation of mutationsList) {
+          console.log(mutation)
+        if (mutation.type == "childList") {
+          console.log("A child node has been added or removed.");
+        } else if (mutation.type == "attributes") {
+          console.log(
+            "The " + mutation.attributeName + " attribute was modified."
+          );
+        }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    var observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+
+    // some action to trigger observer
+    targetNode.setAttribute('data-src', Math.random()) 
+    targetNode.setAttribute('data-src', Math.random()) 
+    var child = document.createElement('span')
+    targetNode.appendChild(child)
+
+    // Later, you can stop observing
+    setTimeout(function () {
+        observer.disconnect();
+    }, 0)
+    
+  </script>
+</html>
+
+<!-- 该对象兼容性不错,支持ie11及其他所有浏览器 -->

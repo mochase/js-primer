@@ -5,6 +5,7 @@
     2. 用`wheel`事件代替待废弃的`mousewheel/DOMMouseScroll`事件
     3. 事件冒泡与事件捕获
     4. 元素拖拽
+    5. 用`MutationObserver`来检测dom的变化
 2. retina -- retina屏幕适配问题汇总
     1. canvas 适配
     2. images 适配
