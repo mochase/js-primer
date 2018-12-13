@@ -1,3 +1,5 @@
+<!-- 注意: 全屏请求必须在事件处理函数中调用，否则将会被拒绝。-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +10,34 @@
 </head>
 <body>
   <div class="demo">this is test text</div>
+  <button>请求全屏</button>
 </body>
 <script>
-  var el = document.querySelector('.demo')
-  setTimeout(function () {
-    el.webkitRequestFullScreen()
-  }, 2000)
+  var elem = document.querySelector('.demo')
+  var btn = document.querySelector('button')
+  btn.addEventListener('click', (e) => {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    }
+  })
+
+  window.addEventListener('fullscreenchange', (e) => {
+    if ( document.fullscreenElement !== null ) {
+        
+        // The target of the event is always the document,
+        // but it is possible to retrieve the fullscreen element through the API
+        document.fullscreenElement;
+    }
+  })
+
+  window.addEventListener('fullscreenerror', (e) => {
+    console.log(e)
+  })
 </script>
 </html>

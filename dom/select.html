@@ -1,4 +1,4 @@
-<!-- select 相关 dom 操作 -->
+<!-- select 相关 dom 操作, 功能比较基础 -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,20 +10,18 @@
 </head>
 <body>
     <select name="" id="">
-        <option value="1234">austin</option>
-        <option value="234">chiago</option>
-        <option value="zcqew">new york</option>
+        <option value="1">austin</option>
+        <option value="2">chiago</option>
+        <option value="3" selected>new york</option>
     </select>
     <button id="addButton">添加</button>
 </body>
 <script>
     document.querySelector('#addButton').addEventListener('click', function () {
         var select = document.querySelector('select')
-        console.log(select.selectedIndex)
-        console.log(select.options)
+        console.log(select.selectedIndex, select.options)
         var selected = select.options[select.selectedIndex]
-        console.log(selected.value)
-        console.log(selected.textContent)
+        console.log(selected)
     })
 </script>
 </html>

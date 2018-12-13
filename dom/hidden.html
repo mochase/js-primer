@@ -1,3 +1,5 @@
+<!-- 可以被 dom query 选中,但是不占位 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-    <div hidden="true">hello</div>
+    <div hidden="true" class="hidden">hello</div>
+    <p>我的位置</p>
 </body>
 <script>
-
+    var el = document.querySelector('.hidden')
+    console.log(el)
 </script>
 </html>
