@@ -10,17 +10,13 @@
     <div id="id" class="custom test" style="color: aqua" data-ng-class="test">hello world</div>
 </body>
 <script>
-    var attributes = document.querySelector('#id').attributes
-    console.log(attributes)
-    var i = attributes.length
-    while (i--) {
-        console.log(attributes[i].name)
-        console.log(attributes[i].value)
-    }
-
-    Array.prototype.forEach.call(attributes, function (item) {
-        console.info(item.name)
-        console.info(item.value)
+    const el = document.querySelector('#id[data-ng-class="test"]')
+    // 遍历
+    Array.prototype.forEach.call(el.attributes, function (item) {
+        console.info(item.name, item.value)
     })
+    const attr = el.getAttribute('id')
+    console.log(attr)
+    el.setAttribute('data-src-x', Math.random())
 </script>
 </html>

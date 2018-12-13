@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="demo">
+      <p>hello</p>
+      <p>world</p>
+    </div>
+  </div>
+</body>
+<script>
+  const wrapper = document.querySelector('.wrapper')
+  console.log(wrapper.innerHTML, wrapper.innerText)
+  var item = document.querySelector('.demo')
+  setTimeout(() => {
+    item.outerHTML = '<h3> this is h3 </h3>'
+    console.log(item)
+  }, 2000)
+  // 被替换的元素虽然不再是文档树的一部分,但变量依然保持对它的引用
+  // 如果元素没有父元素，即如果它是文档的根元素，则设置其outerHTML属性会抛出错误
+  // innerText 返回不带标签的纯文本.
+</script>
+</html>
