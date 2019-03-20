@@ -6,9 +6,8 @@
     3. 事件冒泡与事件捕获
     4. 元素拖拽
     5. 用`MutationObserver`来检测dom的变化
-2. retina -- retina屏幕适配问题汇总
-    1. canvas 适配
-    2. images 适配
-3. promise 例子
-4. event loop 与 microtask 的学习总结
+2. promise
+3. jwt
+4. base64
+5. event loop 与 microtask
 
