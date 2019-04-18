@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Simple offline viedeo player</h1>
+        <div class="controls">
+            <button class="download">download video</button>
+            <button class="cancel">cancel download</button>
+        </div>
+
+        <div class="video-wrapper">
+            等待下载
+        </div>
+    </div>
+</body>
+<script>
+    const url = 'sintel.mp4'
+    let controller, signal
+
+    const videoWrapper = document.querySelector('.video-wrapper')
+    const downloadBtn = document.querySelector('button.download')
+    const cancelBtn = document.querySelector('button.cancel')
+
+    downloadBtn.addEventListener('click', function () {
+        controller = new AbortController
+        signal = controller.signal
+        fetch(url, { signal }).then((res) => {
+            videoWrapper.innerHTML = '开始下载。。。'
+            res.blob().then((myblob) => {
+                const video = document.createElement('video')
+                video.setAttribute('controls', '')
+                video.src = URL.createObjectURL(myblob)
+                videoWrapper.appendChild(video)
+            }).finally(() => {
+                controller = undefined
+                signal= undefined
+            })
+        }).catch(e => {
+            videoWrapper.innerHTML = 'download err: ' + e.message
+        })
+    })
+</script>
+</html>
