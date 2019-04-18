@@ -36,14 +36,24 @@
                 const video = document.createElement('video')
                 video.setAttribute('controls', '')
                 video.src = URL.createObjectURL(myblob)
+                videoWrapper.innerHTML = ''
                 videoWrapper.appendChild(video)
+            }).catch((e) => {
+                videoWrapper.innerHTML = 'download abort..' + e.message
             }).finally(() => {
                 controller = undefined
                 signal= undefined
             })
-        }).catch(e => {
-            videoWrapper.innerHTML = 'download err: ' + e.message
         })
+    })
+
+    cancelBtn.addEventListener('click', function () {
+        if (controller) {
+            controller.abort()
+            alert('download aborted ..')
+        } else {
+            alert('已下载完毕。。')
+        }
     })
 </script>
 </html>
