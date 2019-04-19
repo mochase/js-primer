@@ -32,11 +32,12 @@ var url = '/some/path'
 var request = new Request(url, {
   method: 'POST',
   headers: headers,
-  body: body
+  body: body,
+  mode: 'cors',  // cors | no-cors | same-origin, 跨域设置
+  credentials: 'omit'  // omit | same-origin | include,  cookies设置
 })
 
 fetch(request).then(res => {
-  alert('success')
   res.json().then(data => {
     console.log(data)
   }).catch(e => {
@@ -44,6 +45,7 @@ fetch(request).then(res => {
   })
 })
 
+// 可以手动构造 Response 对象,通常在 ServiceWorkers 中使用
 
 /**
  * [这个API很“迷人”]https://www.w3ctech.com/topic/854
