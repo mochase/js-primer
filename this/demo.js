@@ -1,37 +1,19 @@
 // this 即执行上下文
 
-/**
- * 全局上下文
- */
-console.log(this === window) //true
-
-/**
- * 函数上下文
- */
-
-// 在函数内部,this的值取决于函数执行时的上下文
 function f1() {
     return this
 } 
 
 f1() === window  //true
 
-
-/**
- * 对象方法中的this
- */
 var o = {
     prop: 37,
     func: function () {
         return this.prop
     }
 }
-console.log(o.func()) //37
+console.log(o.func()) // 37
 
-
-/**
- * 原型链中的this
- */
 var o = {
     f: function() {
         return this.a + this.b
