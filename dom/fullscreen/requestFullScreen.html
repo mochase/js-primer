@@ -1,4 +1,9 @@
-<!-- 注意: 全屏请求必须在事件处理函数中调用，否则将会被拒绝。-->
+<!-- 注意: 全屏请求必须在事件处理函数中调用，否则将会被拒绝。 -->
+
+
+
+
+<!-- f11事件,在触发退出全屏时,无法捕获到部分事件(浏览器限制,防止恶意脚本禁止退出全屏) -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,14 +32,16 @@
     }
   })
 
-  window.addEventListener('fullscreenchange', (e) => {
-    if ( document.fullscreenElement !== null ) {
-        
-        // The target of the event is always the document,
-        // but it is possible to retrieve the fullscreen element through the API
-        document.fullscreenElement;
-    }
-  })
+  document.addEventListener('fullscreenchange', (event) => {
+      // document.fullscreenElement will point to the element that
+      // is in fullscreen mode if there is one. If not, the value
+      // of the property is null.
+      if (document.fullscreenElement) {
+          console.log(`Element: ${document.fullscreenElement.id} entered full-screen mode.`);
+      } else {
+          console.log('Leaving full-screen mode.');
+      }
+  });   
 
   window.addEventListener('fullscreenerror', (e) => {
     console.log(e)
