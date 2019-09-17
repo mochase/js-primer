@@ -25,3 +25,7 @@
 | 目的地对象 | drop | 当被拖动元素在目的地元素里放下时触发，一般需要取消浏览器的默认行为。|
 
 > dragenter和dragover事件的默认行为是拒绝接受任何被拖放的元素。因此，我们必须阻止浏览器这种默认行为。e.preventDefault();
+
+#### dataTransfer
+
+使用`event.dataTransfer`在拖拽时传递数据

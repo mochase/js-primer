@@ -1,0 +1,28 @@
+<textarea id='code' rows="8"></textarea>
+<button id='safe'>eval() in a sandboxed frame.</button>
+<div class="iframe-container">
+    <iframe sandbox='allow-scripts allow-same-origin'
+        id='sandboxed'
+        src='./frame.html'>
+    </iframe>
+</div>
+
+
+<script>
+function evaluate() {
+  var frame = document.getElementById('sandboxed');
+  var code = document.getElementById('code').value;
+  frame.contentWindow.postMessage(code, '/'); 
+}
+
+document.getElementById('safe').addEventListener('click', evaluate);
+
+// 同时设置接受部分
+window.addEventListener('message', function (e) {
+    var frame = document.getElementById('sandboxed');
+    // 进行信息来源的验证
+    if ( e.source === frame.contentWindow) {
+        alert('Result: ' + e.data);
+    }
+});
+</script>

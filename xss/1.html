@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>DOM Based XSS Demo</title>
+<script>
+function xsstest()
+{
+    var str = document.getElementById("input").value;
+    document.getElementById("output").innerHTML = "<img src='"+str+"'></img>";
+}
+</script>
+</head>
+<body>
+<div id="output"></div>
+<input type="text" id="input" size=50 value="" />
+<input type="button" value="submit" onclick="xsstest()" />
+</body>
+</html>
+<!-- 输入:  x' onerror='javascript:alert(/xss/) -->
