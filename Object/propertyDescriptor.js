@@ -1,9 +1,9 @@
 // 属性描述符
 /**
  * 数据属性:
- * value, writable,enumerable,configurable;
+ * value,writable,enumerable,configurable;
  * 存取器属性:
- * get, set,enumerable, configurable
+ * get,set,enumerable, configurable
  */
 
  /**

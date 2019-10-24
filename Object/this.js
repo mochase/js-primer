@@ -1,18 +1,13 @@
-function f1() {
-    return this
-} 
+/**
+ * this 即执行上下文(指针), this不是变量(不遵从词法作用域),是关键字.指向方法调用的当前对象;
+ * 
+ * call, apply, bind 用来改变函数的执行上下文(改变函数体内this的指向)
+ * call, apply 立即调用, bind 只绑定 this
+ * f.call(_this, arg1, arg2)
+ * f.apply(_this, [arg1, arg2])
+ * f.bind(_this, [, arg1[, arg2...]])
+ */
 
-f1() === window 
-// true
-
-var o = {
-    prop: 37,
-    func () {
-        return this.prop
-    }
-}
-o.func() 
-// 37
 
 var o = {
     fn () {
@@ -25,40 +20,24 @@ p.b = 4
 p.fn()
 // 5
 
-function getModule () {
-    return Math.sqrt(this.re * this.re + this.im * this.im)
+
+var foo = { x: 3 }
+function bar () {
+    console.log(this.x)
 }
+var ff = bar.bind(foo)
+ff()
+//3
 
-var o = {
-    re: 1,
-    im: -1,
-    get phase () {
-        return Math.atan2(this.im, this.re)
-    }
-}
+// 一些应用
+var arr = [1, 2, 3]
+var args= ['a', 'b', 'c']
+var output_1 = Array.prototype.push.call(arr, 'a', 'b', 'c')
+var output_2 = Array.prototype.push.apply(arr, args)
+// [1, 2, 3, 'a', 'b', 'c']
 
-Object.defineProperty(o, 'module', {
-    get: getModule, enumerable: true, configurable: true
-})
-console.log(o.phase, o.module)  
-//-0.78, 1.414
+var numbers = [1, 2, 100, -100]
+var maxNumber = Math.max.apply(Math, numbers)
 
-/**
- * 构造函数中的this
- * 如果返回值不是一个对象,则返回this
- */
-function C3(){
-    this.a = 37
-    return {b: 40, c: 49}
-}
-o = new C3()
-// undefined
-
-// 绑定this
 const fn = document.querySelector
 fn.call(document, 'div')
-
-
-
-
-
