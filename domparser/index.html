@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+<script>
+    const domstr = `<div>lorem loremlorem lorem<div>lorem loremlorem lorem</div>lorem loremlorem lorem<div>lorem loremlorem lorem</div></div>`
+    const createElement = (str) => new DOMParser().parseFromString(str, 'text/html').body
+
+    const dom = createElement(domstr)
+    const el = document.querySelector('#container')
+    el.appendChild(dom)
+    // 根据html字符串提前构造dom的能力
+    // 插入的script标签内脚本依然不可执行,类似于innerHTML,可能也是同样基于xss防范的考虑
+    // 注入可执行的脚本,暂时只想到document.write
+</script>
+</html>
