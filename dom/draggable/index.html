@@ -1,7 +1,6 @@
 <div class="dropzone">
     <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
         <p>p1</p>
-        <p>p2</p>
     </div>
 </div>
 <div class="dropzone"></div>
@@ -18,7 +17,7 @@
 
     .dropzone {
         width: 200px;
-        height: 100px;
+        height: 200px;
         background: blueviolet;
         margin-bottom: 10px;
         padding: 10px;
@@ -38,6 +37,8 @@
         dragged = event.target;
         // 使其半透明
         event.target.style.opacity = .5;
+        // 传递数据
+        event.dataTransfer.setData('today', +Date.now())
     }, false);
 
     document.addEventListener("dragend", function (event) {
@@ -70,11 +71,16 @@
     document.addEventListener("drop", function (event) {
         // 阻止默认动作（如打开一些元素的链接）
         event.preventDefault();
+        console.log(event.dataTransfer.getData('today'))
         // 移动拖动的元素到所选择的放置目标节点
         if (event.target.className == "dropzone") {
             event.target.style.background = "";
             dragged.parentNode.removeChild(dragged);
             event.target.appendChild(dragged);
+            const time = event.dataTransfer.getData('today')
+            const node = document.createElement('p')
+            node.innerHTML = `now is ${new Date(+time)}`
+            event.target.appendChild(node)
         }
 
     }, false);

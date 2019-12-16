@@ -1,7 +1,15 @@
 // 订阅者模式
+
 var pubsub = {};
 (function(q) {
     //话题组
+    /**
+     * {
+     *  topic_1: [{token: '', func: ''}],
+     * 
+     *  
+     * }
+     */
     var topics = {}
     //订阅者id
     var uid = 0
